@@ -1,0 +1,34 @@
+// -*- coding: utf-8 -*-
+// Last-Updated : <2014/06/15 22:17:56 by samui>
+
+#include <iostream>
+#include <cstdio>
+#define rep(i,n) for(int (i) = 0; (i) < (int)(n); ++(i))
+#define rer(i,l,n) for(int (i) = l; (i) <= (int)(n); ++(i))
+#define reu(i,l,n) for(int (i) = l; (i) < (int)(n); ++(i))
+template<typename T,typename U> inline void amin(T &x,U y){ if(y<x) x = y;}
+template<typename T,typename U> inline void amax(T &x,U y){ if(x<y) x = y;}
+template<typename TYPE,std::size_t SIZE>
+std::size_t len(const TYPE (&array)[SIZE]){return SIZE;}
+
+int main(int argc, char *argv[])
+{
+  
+  int A[] = {1,3,-2,-3,4,1};
+  int ans = 0;
+  rep(i,len(A)){
+    int total = 0;
+    reu(j,i,len(A)){
+	total+=A[j];
+	if (total < 0){
+	  i = j;
+	}
+    }
+    if (ans < total){
+      ans = total;
+    }
+  }
+  std::cout<<ans<<std::endl;
+
+  return 0;
+}
